@@ -26,16 +26,20 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return move || getInput();
+    move = move || getInput();
+    console.log ("Player move is: " + move);
+    return move;
 }
 
 function getComputerMove(move) {
     var move;
-    move = move || randomPlay();
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    return move || getInput();
+    move = move || randomPlay();
+    console.log ("Computer move is: " + move);
+    return move;
+
 }
 
 function getWinner(playerMove,computerMove) {
@@ -44,8 +48,30 @@ function getWinner(playerMove,computerMove) {
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
     /* YOUR CODE HERE */
+    if (computerMove === playerMove) {
+        winner = 'tie';
+    }
+    else if (computerMove === 'rock' && playerMove === 'paper') {
+        winner = 'player';
+    }
+    else if (computerMove === 'rock' && playerMove === 'scissors') {
+        winner = 'computer';
+    }
+    else if (computerMove === 'scissors' && playerMove === 'rock') {
+        winner = 'player';
+    }
+    else if (computerMove === 'scissors' && playerMove === 'paper') {
+        winner = 'computer';
+    }
+    else if (computerMove === 'paper' && playerMove === 'scissors') {
+        winner = 'player';
+    }
+    else if (computerMove === 'paper' && playerMove === 'rock') {
+        winner = 'computer';
+    }
+
+    console.log("hit")
     return winner;
-}
 
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
